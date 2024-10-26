@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<math.h>
+
 void main()
 {
 int Headache,Chills,Fever,Fatigue,Vomitting,Musclepain,Diarrhea,Cough,Abdominalpain,Bleeding,Rapidbreathing,Skinrash;
@@ -69,7 +71,9 @@ if(Skinrash)
 if(Bleeding)
     denguescore++;
 
-if(malariascore>denguescore)
+if(abs(malariascore-denguescore)<2)
+    printf("\nSymptoms overlap for both Malaria and Dengue. Please consult a doctor.\n");
+else if(malariascore>denguescore)
   {
    if(malariascore>=5)
     printf("\nYou have a high chance of having Malaria.\n");
