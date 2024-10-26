@@ -30,47 +30,61 @@ printf("Do you have Bleeding?: ");
 scanf("%d",&Bleeding);
 
 if(Headache)
-    {malariascore=malariascore+1;
-    denguescore=denguescore+1;}
+    {
+    malariascore++;
+    denguescore++;
+    }
 if(Chills)
-    {malariascore=malariascore+1;
-    denguescore=denguescore+1;}
+    {
+    malariascore++;
+    denguescore++;
+    }
 if(Fever)
-    {malariascore=malariascore+1;
-    denguescore=denguescore+1;}
+    {
+    malariascore++;
+    denguescore++;
+    }
 if(Fatigue)
-    {malariascore=malariascore+1;
-    denguescore=denguescore+1;}
+    {
+    malariascore++;
+    denguescore++;
+    }
 if(Musclepain)
-    malariascore=malariascore+1;
+    malariascore++;
 if(Diarrhea)
-    malariascore=malariascore+1;
+    malariascore++;
 if(Cough)
-    malariascore=malariascore+1;
+    malariascore++;
 if(Vomitting)
-    {malariascore=malariascore+1;
-    denguescore=denguescore+1;}
+    {
+    malariascore++;
+    denguescore++;
+    }
 if(Abdominalpain)
-    denguescore=denguescore+1;
+    denguescore++;
 if(Rapidbreathing)
-    denguescore=denguescore+1;
+    denguescore++;
 if(Skinrash)
-   denguescore=denguescore+1;
+   denguescore++;
 if(Bleeding)
-    denguescore=denguescore+1;
+    denguescore++;
 
-if(malariascore>=5&&denguescore>=5)
-    printf("You have a high chance to have both Malaria and Dengue. Consult a doctor immediately");
-else if(malariascore>=5)
-    printf("You have a high chance of having Malaria.");
-else if(denguescore>=5)
-    printf("You have a high chance of having Dengue.");
-else if((malariascore>=2&&malariascore<5)&&(denguescore>=2&&denguescore<5))
-    printf("You have certain symptoms of both Malaria and Dengue. Consult a doctor immediately.");
-else if(malariascore>=2&&malariascore<5)
-    printf("You have certain symptoms of Malaria. Please take care of yourself.");
-else if(denguescore>=2&&denguescore<5)
-    printf("You have certain symptoms of Dengue. Please take care of yourself.");
-else
-    printf("You are healthy");
+if(malariascore>denguescore)
+  {
+   if(malariascore>=5)
+    printf("\nYou have a high chance of having Malaria.\n");
+   else if(malariascore>=2&&malariascore<5)
+    printf("\nYou have certain symptoms of Malaria. Please take care of yourself.\n");
+  }
+else if(denguescore>malariascore)
+  {
+   if(denguescore>=5)
+    printf("\nYou have a high chance of having Dengue.\n");
+   else if(denguescore>=2&&denguescore<5)
+    printf("\nYou have certain symptoms of Dengue. Please take care of yourself.\n");
+  }
+ else if((malariascore>=2&&malariascore<5)&&(denguescore>=2&&denguescore<5))
+    printf("\nYou have certain symptoms of both Malaria and Dengue. Consult a doctor immediately.\n");
+ else
+    printf("\nYou are healthy\n");
 }
