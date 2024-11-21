@@ -3,23 +3,29 @@
 #include <ctype.h>
 #include<math.h>
 
-char dengue_symptoms[14] = {'y','y','y','y','y','n','n','n','y','n','n','y','y','y'}; // fever, headache, joint pain, rash, nausea
-char malaria_symptoms[14] ={'y','y','n','n','n','y','y','y','y','y','y','n','n','n'}; // fever, headache, chills, sweating, muscle pain
+char dengue_symptoms[14] = {'y','y','y','y','y','n','n','n','y','n','n','y','y','y'};
+char malaria_symptoms[14] ={'y','y','n','n','n','y','y','y','y','y','y','n','n','n'};
 
-void diagnose(char answers[], int n)
+void CalculateScore(char answers[], int n,int *x,int *y)
 {
     int dengue_score = 0, malaria_score = 0;
 
 
     for (int i = 0; i < n; i++)
     {
-        if (tolower(answers[i])==dengue_symptoms[i])
+        if (tolower(answers[i])==dengue_symptoms[i]&&tolower(answers[i])=='y')
             dengue_score++;
 
-        if (tolower(answers[i])==malaria_symptoms[i])
+        if (tolower(answers[i])==malaria_symptoms[i]&&tolower(answers[i])=='y')
             malaria_score++;
     }
 
+    *x=dengue_score;
+    *y=malaria_score;
+}
+
+void Diagnose(malaria_score, dengue_score)
+{
 
     if(abs(malaria_score-dengue_score)<2&&malaria_score>2&&dengue_score>2)
         printf("\nSymptoms overlap for both Malaria and Dengue. Please consult a doctor.\n");
@@ -45,33 +51,22 @@ void diagnose(char answers[], int n)
 void main()
 
 {
+    int *malaria_score,*dengue_score;
     int n = 14;
     char answers[14];
 
-    char *questions[] = {
-    "Do you have a fever? (y/n): ",
-    "Do you have a headache? (y/n): ",
-    "Do you have joint pain? (y/n): ",
-    "Do you have a skin rash? (y/n): ",
-    "Do you feel nauseous? (y/n): ",
-    "Do you have chills? (y/n): ",
-    "Do you have sweating? (y/n): ",
-    "Do you have muscle pain? (y/n): ",
-    "Do you have Fatigue? (y/n): ",
-    "Do you have Diarrhea? (y/n): ",
-    "Do you have Cough? (y/n): ",
-    "Do you have Abdominal pain? (y/n): ",
-    "Do you have bleeding? (y/n): ",
-    "Do you have rapid breathing? (y/n): ",
-    };
+    char *Symptoms[] = {"fever","headache","joint pain","skin rash","nausea","chills","sweating","muscle pain","Fatigue",
+                        "Diarrhea","Diarrhea","Cough","Abdominal pain","bleeding","rapid breathing"};
 
-printf("Please answer the following questions:\n");
-for (int i = 0; i < n; i++)
-{
-    printf("%s", questions[i]);
-    scanf(" %c", &answers[i]);
-}
+    printf("Please answer the following questions:(y/n)\n\n");
+    for (int i = 0; i < n; i++)
+    {
+        printf("Do you have %s?: ", Symptoms[i]);
+        scanf(" %c", &answers[i]);
+    }
 
-diagnose(answers, n);
+    CalculateScore(answers, n, &dengue_score, &malaria_score);
+
+    Diagnose(malaria_score, dengue_score);
 
 }
